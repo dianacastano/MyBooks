@@ -1,0 +1,15 @@
+.form_libros{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form_libros .btts{
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+}
