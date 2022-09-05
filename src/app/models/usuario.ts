@@ -10,12 +10,11 @@ export class Usuario {
 
     // Constructor
     constructor(nombre: string, apellidos: string, correo: string, url: string, password: string, id_usuario: number = 0) {
-        this.id_usuario = id_usuario;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.correo = correo;
-        this.url = url;
-        this.password = password;
+    this.id_usuario = id_usuario;
+    this.nombre = nombre;
+    this.apellidos = apellidos;
+    this.correo = correo;
+    this.url = url;
+    this.password = password;
     }
 }
-

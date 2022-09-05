@@ -1,11 +1,10 @@
 .perfil {
-    color: var(--secondary-text-color);
-    background-color: var(--secondary-bg-color);
+    color: var(--main-text-color);
+    background-color: var(--secondary-bg-color-t);
     border-radius: 25px;
     width: 50%;
     height: auto;
     text-align: center;
-    box-shadow: .5rem .5rem 2rem rgba(0, 0, 0, .3);
     border: 1px solid gray;
 }
 
