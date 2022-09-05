@@ -1,24 +1,22 @@
-.pie {
+.menu{
+    width: 100%;
+    height: 10vh;
+    background-color: var(--secondaryColor);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    background-color: var(--secondary-bg-color);
-    height: 80px;
-    padding: 0 2rem;
-    
-
+    font-size: 30px;
+    /* position: fixed; */
+    bottom: 0;
+    z-index: 0;
 }
 
-.pie p {
-    align-self: end;
-    margin-left: auto;
-    margin-bottom: 0.5rem;
+.menu__enlaces{
+    margin-left: 15px;
+    margin-right: 15px;
+    color:var(--primaryColor)
 }
 
-.pie a {
-    margin-right: 1.2rem;
-}
-
-.pie img {
-    height: 50px;
-    width: auto;
+.texto{
+    font-size: 10px;
 }
