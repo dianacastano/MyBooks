@@ -2,13 +2,13 @@
     display: flex;
     align-items: center;
     position: fixed;
-    top: 0;
+    font-family: 'Kings', cursive;
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
-    width: 100%;
+    width: 100vw;
     height: 100px;
-    padding: 0 5rem;
-    z-index: 1;
+    padding: .5rem 2rem;
+
 }
 
 .imglogo {   
@@ -17,15 +17,12 @@
     margin-right: 20px;
 }
 
-.textlogo {
-    font-family: "fantasy";
+.textlogo{
     font-size: 2.5rem;
 }
 
 .navegacion {
-    align-self: flex-end;
     margin-left: auto;
-    margin-bottom: .5rem;
 }
 
 .navegacion a {
