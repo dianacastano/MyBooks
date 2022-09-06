@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario';
+import { UsuarioService } from '../../shared/usuario.service';
+import { NotificacionService } from '../../shared/notificacion.service';
 
 @Component({
   selector: 'app-perfil',
@@ -8,33 +10,41 @@ import { Usuario } from '../../models/usuario';
 })
 export class PerfilComponent implements OnInit {
 
-  public usuarioPerfil : Usuario;
-  public mensaje: string;
-  public ocultarMensaje : boolean;
-  public colorMensaje : string;
-
-  constructor() { 
-    this.usuarioPerfil = new Usuario('Diana', 'Castaño Guerra', 'diamarcast1803@gmail.com', '../../../assets/img/foto.jpg', 'P@ssw0rd', 0);
-    this.ocultarMensaje = true;
-  }
+    constructor(private ns: NotificacionService, public us: UsuarioService) { }
 
   ngOnInit(): void {
   }
 
   modificar(nombre: string, apellidos: string, correo: string, url: string, password: string) {
-    let cambios: boolean = false;
-    if (nombre) { this.usuarioPerfil.nombre = nombre; cambios = true };    
-    if (apellidos) { this.usuarioPerfil.apellidos = apellidos; cambios = true };
-    if (correo) { this.usuarioPerfil.correo = correo; cambios = true };
-    if (url) { this.usuarioPerfil.url = url; cambios = true };
-    if (password) { this.usuarioPerfil.password = password; cambios = true };
-    this.ocultarMensaje = false;
-    if (cambios) {
-      this.mensaje = 'Usuario actualizado';
-      this.colorMensaje = 'lightgreen'
+    let usuarioPerfil = new Usuario(nombre, apellidos, correo, url, (password == '') ? null : password, this.us.usuario.id_usuario);
+    let mensaje = this.validarPerfilUsuario(usuarioPerfil);
+    if (mensaje != '') {
+      this.ns.mostrarwWarning(mensaje, 'Advertencia')
     } else {
-      this.mensaje = 'No se han detectado cambios';
-      this.colorMensaje = 'red'
+      this.us.edit(usuarioPerfil)
+        .subscribe((respuesta: any) => {
+          if (respuesta.ok) {
+            this.ns.mostrarSuccess(respuesta.message, 'Correcto');
+            this.us.usuario = usuarioPerfil;
+            this.us.usuario.password = '';
+          } else {
+            this.ns.mostrarwWarning(respuesta.message, 'Advertencia');
+          }
+        }, (err) => {
+          this.ns.mostrarError(err.error.message, 'Error');
+        })
     }
   }
+
+  validarPerfilUsuario(usuario: Usuario) : string {
+    let result = '';
+    let { nombre, correo } = usuario;
+    result += (nombre == '') ? 'Nombre' : '';
+    result += (correo == '' && result != '') ? ' / Correo' : (correo == '') ? 'Correo' : '';
+    if (result != '') {
+        result = 'Los siguientes campos son obligatorios: ' + result;
+    }
+    return result
+  }
+
 }

@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
-import { FormularioRegistroComponent } from './component/formulario-registro/formulario-registro.component';
 import { RegistroComponent } from './pages/registro/registro.component';
-import { PerfilComponent } from './pages/perfil/perfil.component';
-import { FormularioLibroComponent } from './component/formulario-libro/formulario-libro.component';
-import { RefPipe } from './pipes/ref.pipe';
-import { Libros1Component } from './pages/libros1/libros1.component'
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 import { HttpClientModule } from '@angular/common/http';
-import { AgregarLibroComponent } from './pages/agregar-libro/agregar-libro.component';
-import { ModificarLibroComponent } from './pages/modificar-libro/modificar-libro.component';
 
+import { RefPipe } from './pipes/ref.pipe';
 
+import { FormularioRegistroComponent } from './component/formulario-registro/formulario-registro.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { LibrosComponent } from './pages/libros/libros.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FormularioLoginComponent } from './component/formulario-login/formulario-login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,20 +28,25 @@ import { ModificarLibroComponent } from './pages/modificar-libro/modificar-libro
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    FormularioRegistroComponent,
     RegistroComponent,
-    PerfilComponent,    
-    FormularioLibroComponent,
+    FormularioRegistroComponent,
+    PerfilComponent,
+    LibrosComponent,
     RefPipe,
-    Libros1Component,
-    AgregarLibroComponent,
-    ModificarLibroComponent,
-    
+    LoginComponent,
+    FormularioLoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,    
+    ToastrModule.forRoot({
+      timeOut: 2500,
+      positionClass: 'toast-top-left',
+      preventDuplicates: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

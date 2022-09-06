@@ -1,4 +1,4 @@
-.registro-form {
+.login-form {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -9,6 +9,6 @@
     background-color: var(--secondary-bg-color);
 }
 
-.registro-form h3{
+.login-form h3{
     text-align: center;
 }
