@@ -3,5 +3,31 @@
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: calc(100vh - 80px);
+    height: calc(200vh - 80px);
+    padding: 1rem; /* Añadir padding para evitar que el contenido se pegue a los bordes */
+    box-sizing: border-box; /* Incluye padding y borde en el tamaño total del elemento */
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+    .registro {
+        height: auto; /* Permite que el contenido crezca en altura si es necesario */
+        flex-direction: column; /* Cambia la dirección del flex a columna para pantallas pequeñas */
+        padding: 2rem; /* Aumenta el padding en pantallas pequeñas */
+    }
+}
+
+/* Media query para pantallas medianas */
+@media (max-width: 1024px) {
+    .registro {
+        padding: 1.5rem; /* Ajusta el padding para pantallas medianas */
+    }
+}
+
+/* Media query específica para pantallas de 14 pulgadas (aproximadamente 1366px a 1920px de ancho) */
+@media (min-width: 1280px) and (max-width: 1920px) {
+    .registro {
+        padding: 2rem; /* Ajusta el padding para una mejor apariencia en pantallas de 14 pulgadas */
+        height: calc(100vh - 100px); /* Ajusta la altura para estas pantallas */
+    }
 }
